@@ -20,7 +20,7 @@ st.markdown(
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: -60px; /* Adjusts the space above the logo */
+        margin-top: -50px; /* Adjusts the space above the logo */
     }
     </style>
     <div class="centered-logo">
