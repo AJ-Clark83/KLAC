@@ -36,7 +36,7 @@ st.markdown(
 
 
 # Create a concatenated column for the filter
-df['Age Gender'] = df['Age'].astype(str) + " " + df['Gender']
+df['Group'] = df['Age'].astype(str) + " " + df['Gender']
 
 
 
@@ -45,17 +45,17 @@ st.title("Kingsway Little Athletics Centre")
 st.subheader("Active Program")
 
 # Multi-select filter
-age_gender_options = df['Age Gender'].unique()
-selected_age_gender = st.multiselect("Select Age and Gender", age_gender_options)
+age_gender_options = df['Group'].unique()
+selected_age_gender = st.multiselect("Filter Events by Age and Gender (Group)", age_gender_options)
 
 # Filter the dataframe based on selection
 if selected_age_gender:
-    filtered_df = df[df['Age Gender'].isin(selected_age_gender)].copy()
+    filtered_df = df[df['Group'].isin(selected_age_gender)].copy()
 else:
     filtered_df = df.copy()  # Show all data if no filter is selected
 
 # Reorder columns to move Age_Gender to the first position and drop Age and Gender
-filtered_df = filtered_df[['Age Gender', 'Event', 'Marshalling Area', 'Status']]
+filtered_df = filtered_df[['Group', 'Event', 'Marshalling Area', 'Status']]
 
 # Display the dataframe
 st.dataframe(filtered_df, hide_index=True, use_container_width=True)
