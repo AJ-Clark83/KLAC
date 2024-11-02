@@ -35,7 +35,7 @@ st.markdown(
 df['Age_Gender'] = df['Age'].astype(str) + " " + df['Gender']
 
 # Set up the page with title and subtitle
-st.title("Kingsway Little Athletics Club")
+st.title("Kingsway Little Athletics Centre")
 st.subheader("Active Program")
 
 # Multi-select filter
