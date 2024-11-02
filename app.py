@@ -34,6 +34,20 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# Hide Streamlit header and footer
+st.markdown(
+    """
+    <style>
+    /* Hide Streamlit header */
+    header {visibility: hidden;}
+    
+    /* Hide Streamlit footer */
+    footer {visibility: hidden;}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Google Analytics tracking code
 GA_TRACKING_ID = "G-643W1015V5"  # Replace with your own tracking ID
 
