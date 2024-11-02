@@ -36,7 +36,6 @@ filtered_df = filtered_df[['Age_Gender', 'Event', 'Marshall Area', 'Status']]
 st.dataframe(filtered_df, use_container_width=True)
 
 # Add a refresh button that clears the cache and refreshes the page
-if st.button("Refresh and Clear Cache"):
+if st.button("Refresh"):
     st.cache_data.clear()  # Clear cached data
-    st.cache_resource.clear()  # Clear cached resources
-    st.experimental_set_query_params()  # Refresh the page
+    st.experimental_set_query_params()  # Refresh the pagez
