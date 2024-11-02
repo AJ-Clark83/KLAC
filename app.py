@@ -34,22 +34,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# CSS to hide the Streamlit footer, header, and "Made by" branding
-st.markdown(
-    """
-    <style>
-    /* Hide Streamlit header */
-    header {visibility: hidden;}
-    
-    /* Hide Streamlit footer */
-    footer {visibility: hidden;}
-
-    /* Hide "Made by" and Streamlit branding in the footer */
-    .css-1lsmgbg.e1fqkh3o3 {display: none !important;}
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 # Create a concatenated column for the filter
 df['Group'] = df['Age'].astype(str) + " " + df['Gender']
 
