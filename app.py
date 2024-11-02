@@ -34,11 +34,25 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# Google Analytics tracking code
+GA_TRACKING_ID = "G-643W1015V5"  # Replace with your own tracking ID
+
+st.markdown(
+    f"""
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={GA_TRACKING_ID}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){{dataLayer.push(arguments);}}
+      gtag('js', new Date());
+      gtag('config', '{GA_TRACKING_ID}');
+    </script>
+    """,
+    unsafe_allow_html=True
+)
 
 # Create a concatenated column for the filter
 df['Group'] = df['Age'].astype(str) + " " + df['Gender']
-
-
 
 # Set up the page with title and subtitle
 st.title("Kingsway Little Athletics Centre")
