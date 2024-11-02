@@ -6,6 +6,10 @@ Created on Sat Nov  2 14:39:52 2024
 """
 
 import streamlit as st
+
+# Set page configuration to wide mode
+st.set_page_config(layout="wide")
+
 import pandas as pd
 
 # Load the data from Google Sheets
@@ -32,24 +36,26 @@ st.markdown(
 
 
 # Create a concatenated column for the filter
-df['Age_Gender'] = df['Age'].astype(str) + " " + df['Gender']
+df['Age Gender'] = df['Age'].astype(str) + " " + df['Gender']
+
+
 
 # Set up the page with title and subtitle
 st.title("Kingsway Little Athletics Centre")
 st.subheader("Active Program")
 
 # Multi-select filter
-age_gender_options = df['Age_Gender'].unique()
+age_gender_options = df['Age Gender'].unique()
 selected_age_gender = st.multiselect("Select Age and Gender", age_gender_options)
 
 # Filter the dataframe based on selection
 if selected_age_gender:
-    filtered_df = df[df['Age_Gender'].isin(selected_age_gender)].copy()
+    filtered_df = df[df['Age Gender'].isin(selected_age_gender)].copy()
 else:
     filtered_df = df.copy()  # Show all data if no filter is selected
 
 # Reorder columns to move Age_Gender to the first position and drop Age and Gender
-filtered_df = filtered_df[['Age_Gender', 'Event', 'Marshalling Area', 'Status']]
+filtered_df = filtered_df[['Age Gender', 'Event', 'Marshalling Area', 'Status']]
 
 # Display the dataframe
 st.dataframe(filtered_df, hide_index=True, use_container_width=True)
