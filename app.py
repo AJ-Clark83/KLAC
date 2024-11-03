@@ -107,6 +107,6 @@ def fetch_announcement(url):
 announcement = fetch_announcement(text_file_url)
 if announcement and announcement.lower() != "hide":  # Check if content is not "hide"
     st.markdown("<hr style='border-top: 2px solid #082251; margin: 20px 0;'>", unsafe_allow_html=True)
-    st.markdown(f"### 📢🍔 Canteen Specials\n{announcement}")
+    st.markdown(f"### 📢 Live Information:\n{announcement}")
     st.markdown("<hr style='border-top: 2px solid #082251; margin: 20px 0;'>", unsafe_allow_html=True)
     
