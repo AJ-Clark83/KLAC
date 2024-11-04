@@ -85,8 +85,7 @@ if page == "Program":
     )
 
     # Add a refresh button that clears the cache and triggers a rerun
-    if st.button("Refresh"):
-        st.session_state["refresh_trigger"] = not st.session_state.get("refresh_trigger", False)
+    if st.button("Refresh"):st.session_state["refresh_trigger"] = not st.session_state.get("refresh_trigger", False)
 
     # URL to the raw text file on GitHub
     text_file_url = "https://pastebin.com/raw/74635ARb"
@@ -112,36 +111,36 @@ elif page == "Display":
     
     filtered_df = df[['Group', 'Event', 'Marshalling Area', 'Status']]
     
-    # Define custom CSS for the table with Roboto font, left-aligned headers, and alternating row colors
-    st.markdown(
-        """
-        <style>
-        .custom-table {
-            font-family: 'Roboto', sans-serif;
-            font-size: 15px;
-            font-weight: bold;
-            color: #FFFFFF;
-            background-color: #082251;
-            border-collapse: collapse;
-            width: 100%;
-            margin-top: -60px;
-        }
-        .custom-table th, .custom-table td {
-            padding: 5px;
-            border: 1px solid #A8CE3B;
-        }
-        .custom-table th {
-            background-color: #A8CE3B;
-            color: #082251;
-            text-align: left;  /* Left-align column headings */
-        }
-        .custom-table tr:nth-child(even) td {  /* Apply background to even rows */
-            background-color: #0A2E47;  /* Slightly darker shade */
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
+    # # Define custom CSS for the table with Roboto font, left-aligned headers, and alternating row colors
+    # st.markdown(
+    #     """
+    #     <style>
+    #     .custom-table {
+    #         font-family: 'Roboto', sans-serif;
+    #         font-size: 15px;
+    #         font-weight: bold;
+    #         color: #FFFFFF;
+    #         background-color: #082251;
+    #         border-collapse: collapse;
+    #         width: 100%;
+    #         margin-top: -60px;
+    #     }
+    #     .custom-table th, .custom-table td {
+    #         padding: 5px;
+    #         border: 1px solid #A8CE3B;
+    #     }
+    #     .custom-table th {
+    #         background-color: #A8CE3B;
+    #         color: #082251;
+    #         text-align: left;  /* Left-align column headings */
+    #     }
+    #     .custom-table tr:nth-child(even) td {  /* Apply background to even rows */
+    #         background-color: #0A2E47;  /* Slightly darker shade */
+    #     }
+    #     </style>
+    #     """,
+    #     unsafe_allow_html=True
+    # )
     
     # Convert DataFrame to HTML
     table_html = filtered_df.to_html(index=False, classes="custom-table")
