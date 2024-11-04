@@ -129,7 +129,7 @@ elif page == "Display":
          background-color: #082251;
          border-collapse: collapse;
          width: 100%;
-         margin-top: -220px;
+         margin-top: -60px;
      }
      .custom-table th, .custom-table td {
          padding: 3px;
