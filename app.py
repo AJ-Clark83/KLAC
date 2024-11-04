@@ -14,7 +14,7 @@ import requests
 st.set_page_config(layout="wide")
 
 # Set the refresh interval in milliseconds
-refresh_interval_ms = 30000  # 30 seconds
+refresh_interval_ms = 20000  # 30 seconds
 
 # Load the data from Google Sheets
 url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRBXEVC7gCD1n1JteAdB0I1JUbVCfH-vA6s8uJ1CHIJ4ALWF4dCh1NJk6oahJQlOGixibw3WlY21aIi/pub?gid=0&single=true&output=csv'
