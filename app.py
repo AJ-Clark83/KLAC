@@ -86,7 +86,6 @@ if page == "Program":
 
     # Add a refresh button that clears the cache and triggers a rerun
     if st.button("Refresh"):
-        st.cache_data.clear()
         st.session_state["refresh_trigger"] = not st.session_state.get("refresh_trigger", False)
 
     # URL to the raw text file on GitHub
