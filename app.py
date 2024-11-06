@@ -123,7 +123,7 @@ elif page == "Display":
      <style>
      .custom-table {
          font-family: 'Roboto', sans-serif;
-         font-size: 15px;
+         font-size: 45px;
          font-weight: bold;
          color: #FFFFFF;
          background-color: #082251;
