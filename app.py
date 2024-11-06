@@ -9,12 +9,13 @@ from streamlit_autorefresh import st_autorefresh
 import streamlit as st
 import pandas as pd
 import requests
+import time
 
 # Set page configuration to wide mode
 st.set_page_config(layout="wide")
 
 # Set the refresh interval in milliseconds
-refresh_interval_ms = 20000  # 30 seconds
+refresh_interval_ms = 10000  # 30 seconds
 
 # Load the data from Google Sheets
 url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRBXEVC7gCD1n1JteAdB0I1JUbVCfH-vA6s8uJ1CHIJ4ALWF4dCh1NJk6oahJQlOGixibw3WlY21aIi/pub?gid=0&single=true&output=csv'
@@ -112,46 +113,77 @@ if page == "Program":
         st.markdown("<hr style='border-top: 2px solid #082251; margin: 20px 0;'>", unsafe_allow_html=True)
 
 elif page == "Display":
-    # Automatically refresh the page every 30 seconds
+        
+    # Autorefresh mechanism
     st_autorefresh(interval=refresh_interval_ms, key="display_autorefresh")
-
+    
+    # Refresh count logic for looping and data refresh
+    if 'refresh_count' not in st.session_state:
+        st.session_state['refresh_count'] = 0
+    
+    # Filter and process your DataFrame
     filtered_df = df[['Group', 'Event', 'Marshalling Area', 'Status']]
+    display_df = filtered_df.copy()
+    display_df['Marshalling Area'] = display_df['Marshalling Area'].str.replace('Marshalling', '')
+    display_df['Status'] = display_df['Status'].str.replace('Event', '')
+    display_df['Group'] = display_df['Group'].str.replace('Female', 'F')
+    display_df['Group'] = display_df['Group'].str.replace('Male', 'M')
+    display_df = display_df.rename(columns={"Marshalling Area": "Area"})
     
-    # Define custom CSS for the table with Roboto font, left-aligned headers, and alternating row colors
+    # Split DataFrame into chunks of 6 rows
+    chunk_size = 6
+    chunks = [display_df[i:i + chunk_size] for i in range(0, len(display_df), chunk_size)]
+    num_chunks = len(chunks)
+    
+    # Determine which chunk to display based on the refresh count
+    current_chunk = st.session_state['refresh_count'] % num_chunks  # Cycle through chunks
+    
+    # Display the current chunk
+    current_df = chunks[current_chunk]
+    
+    # Define custom CSS for the table
     st.markdown(
-     """
-     <style>
-     .custom-table {
-         font-family: 'Roboto', sans-serif;
-         font-size: 45px;
-         font-weight: bold;
-         color: #FFFFFF;
-         background-color: #082251;
-         border-collapse: collapse;
-         width: 100%;
-         margin-top: -80px;
-     }
-     .custom-table th, .custom-table td {
-         padding: 3px;
-         border: 1px solid #A8CE3B;
-     }
-     .custom-table th {
-         background-color: #A8CE3B;
-         color: #082251;
-         text-align: left;
-     }
-     .custom-table tr:nth-child(even) td {
-         background-color: #0A2E47;
-     }
-     </style>
-     """,
-     unsafe_allow_html=True
- )
+        """
+        <style>
+        .custom-table {
+            font-family: 'Roboto', sans-serif;
+            font-size: 55px;
+            font-weight: bold;
+            color: #FFFFFF;
+            background-color: #082251;
+            border-collapse: collapse;
+            width: 75%;
+            margin-top: -40px;
+        }
+        .custom-table th, .custom-table td {
+            padding: 3px;
+            border: 1px solid #A8CE3B;
+        }
+        .custom-table th {
+            background-color: #A8CE3B;
+            color: #082251;
+            text-align: left;
+        }
+        .custom-table tr:nth-child(even) td {
+            background-color: #0A2E47;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
     
-    # Convert DataFrame to HTML
-    table_html = filtered_df.to_html(index=False, classes="custom-table")
+    # Convert current DataFrame chunk to HTML
+    table_html = current_df.to_html(index=False, classes="custom-table")
     
     # Display styled table as HTML in Streamlit
     st.markdown(table_html, unsafe_allow_html=True)
+    
+    # Update refresh count and reload data when loop completes
+    st.session_state['refresh_count'] += 1
+    
+    # Reset refresh count to reload data at the start of a new loop
+    if current_chunk == num_chunks - 1:
+        st.session_state['refresh_count'] = 0
+
 
 
