@@ -9,13 +9,12 @@ from streamlit_autorefresh import st_autorefresh
 import streamlit as st
 import pandas as pd
 import requests
-import time
 
 # Set page configuration to wide mode
 st.set_page_config(layout="wide")
 
 # Set the refresh interval in milliseconds
-refresh_interval_ms = 10000  # 30 seconds
+refresh_interval_ms = 10000  # 10 seconds
 
 # Load the data from Google Sheets
 url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRBXEVC7gCD1n1JteAdB0I1JUbVCfH-vA6s8uJ1CHIJ4ALWF4dCh1NJk6oahJQlOGixibw3WlY21aIi/pub?gid=0&single=true&output=csv'
