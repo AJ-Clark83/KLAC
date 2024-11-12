@@ -201,15 +201,15 @@ elif page == "Display":
     scoreboard_text_file_url = "https://pastebin.com/raw/n821UBuS"
     announcement_sb = fetch_announcement(scoreboard_text_file_url)
     if announcement_sb and announcement_sb.lower() != "hide":
-        st.markdown("<hr style='border-top: 2px solid #082251; margin: 20px 0; width: 75%;'>", unsafe_allow_html=True)
+        #st.markdown("<hr style='border-top: 2px solid #082251; margin: 20px 0; width: 75%;'>", unsafe_allow_html=True)
         st.markdown(
             f"""
             <div style='width: 75%; background-color: #082251; padding: 20px; border-radius: 5px;'>
-                <h3 style='color: #A8CE3B; text-align: left; font-size: 45px;'>📢 Live Information:</h3>
-                <p style='color: #FFFFFF; text-align: left; font-size: 45px;'>{announcement_sb}</p>
+                <h3 style='color: #A8CE3B; text-align: left; font-size: 50px;'>Live Information:</h3>
+                <p style='color: #FFFFFF; text-align: left; font-size: 50px;'>{announcement_sb}</p>
             </div>
             """, 
             unsafe_allow_html=True
         )
-        st.markdown("<hr style='border-top: 2px solid #082251; margin: 20px 0; width: 75%;'>", unsafe_allow_html=True)
+        #st.markdown("<hr style='border-top: 2px solid #082251; margin: 20px 0; width: 75%;'>", unsafe_allow_html=True)
 
