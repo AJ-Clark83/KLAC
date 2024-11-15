@@ -46,8 +46,12 @@ if page == "Program":
     url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRBXEVC7gCD1n1JteAdB0I1JUbVCfH-vA6s8uJ1CHIJ4ALWF4dCh1NJk6oahJQlOGixibw3WlY21aIi/pub?gid=0&single=true&output=csv'
     df = pd.read_csv(url)
 
+    #Sort Values by Age
+    df = df.sort_values(['Age','Gender'])
+
     # Create a concatenated "Group" column immediately
     df['Group'] = df['Age'].astype(str) + " " + df['Gender']
+   
 
     # Multi-select filter
     age_gender_options = df['Group'].unique()
@@ -126,6 +130,8 @@ elif page == "Display":
     df = pd.read_csv(url)
 
     # Reprocess the data for display
+    df = df.sort_values(['Age','Gender'])
+    
     df['Group'] = df['Age'].astype(str) + " " + df['Gender']
     filtered_df = df[['Group', 'Event', 'Marshalling Area', 'Status']]
     display_df = filtered_df.copy()
