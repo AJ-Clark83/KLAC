@@ -212,7 +212,7 @@ elif page == "Display":
             f"""
             <div style='width: 75%; background-color: #082251; padding: 20px; border-radius: 5px;'>
                 <h3 style='color: #A8CE3B; text-align: left; font-size: 50px;'>Live Information:</h3>
-                <p style='color: #FFFFFF; text-align: left; font-size: 50px;'>{announcement_sb}</p>
+                <p style='color: #FFFFFF; font-weight: bold; text-align: left; font-size: 50px;'>{announcement_sb}</p>
             </div>
             """, 
             unsafe_allow_html=True
