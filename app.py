@@ -32,7 +32,7 @@ if page == "Program":
         }
         </style>
         <div class="centered-logo">
-            <img src="https://raw.githubusercontent.com/AJ-Clark83/KLAC/refs/heads/main/KLAC.jpg" alt="Kingsway Logo" width="150">
+            <img src="https://raw.githubusercontent.com/AJ-Clark83/KLAC/refs/heads/main/kingsway.jpg" alt="Kingsway Logo" width="180">
         </div>
         """,
         unsafe_allow_html=True
