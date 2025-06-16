@@ -39,7 +39,7 @@ if page == "Program":
     )
 
     # Set up the page with title and subtitle
-    st.title("Kingsway Little Athletics Centre")
+    st.title("Kingsway Athletics - Active Program")
     st.subheader("Active Program")
 
     # Load the data from Google Sheets
